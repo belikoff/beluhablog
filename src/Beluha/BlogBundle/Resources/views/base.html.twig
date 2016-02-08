@@ -1,0 +1,25 @@
+{% extends "BeluhaBlogBundle::layout.html.twig" %}
+
+{% block menu %}
+    {% include 'BeluhaBlogBundle::menu.html.twig' %}
+{% endblock %}
+{% block sidebar %}
+        {% block quote %}
+            <div class="quote_block_main">
+                <div class="quote_block-container">
+                    {{ render(controller('BeluhaBlogBundle:Quote:getRamdomQuote')) }}                
+                </div>
+                <div class="quote_block_refresh_container">
+                    <a id="quote_block_refresh" href="#" data-url="{{ path('authorquote_quote_random') }}">обновить</a>
+                </div>
+            </div>
+        {% endblock %}    
+{% endblock %}    
+
+{% block body %}
+    {% block section %}{% endblock %} 
+    {% block child %}{% endblock %} 
+
+{% endblock %}
+
+
