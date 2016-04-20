@@ -1,7 +1,6 @@
 <?php
 
 namespace Beluha\BlogBundle\Repository;
-use Symfony\Component\VarDumper\VarDumper;
 use Doctrine\ORM\Query;
 
 
@@ -23,8 +22,6 @@ class QuoteRepository extends \Doctrine\ORM\EntityRepository
             }
         }
         $randonQuote = $this->find($quotes[$quoteKey]);
-        $dumper = new VarDumper();
-        //$dumper->dump($randonQuote);
         return $randonQuote;
         
     }
@@ -41,14 +38,12 @@ class QuoteRepository extends \Doctrine\ORM\EntityRepository
             ->select('q')
             ->getQuery()
             ->getResult(Query::HYDRATE_ARRAY);
-        $dumper = new VarDumper();
         
 
         $idArray = [];
         foreach ($quotes as $quote){
             $idArray[] = $quote['id'];
         }
-        //$dumper->dump($idArray);
         return $idArray;
     }
 }

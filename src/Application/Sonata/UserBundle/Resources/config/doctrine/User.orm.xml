@@ -9,7 +9,16 @@
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO" />
         </id>
-
+        <one-to-many field="quotes" target-entity="\Beluha\BlogBundle\Entity\Quote" mapped-by="by_added">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </one-to-many>
+        <one-to-many field="posts" target-entity="\Beluha\BlogBundle\Entity\Post" mapped-by="author">
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </one-to-many>        
     </entity>
 
 </doctrine-mapping>

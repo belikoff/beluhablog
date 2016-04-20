@@ -16,7 +16,7 @@
     {{ parent() }}
     <aside>
         <h3>{{ 'author.title' | trans }}</h3>
-            <p><a href="#" title="{{ 'post.by.author' | trans({ '%name%': post.author.username }) }}">{{ post.author.username }}</a></p>
+            <p><a href="{{ path('blog_author', { user: post.author.id })}}" title="{{ 'post.by.author' | trans({ '%name%': post.author.username }) }}">{{ post.author.username }}</a></p>
     </aside>
 {% endblock %}
 

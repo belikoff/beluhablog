@@ -4,7 +4,6 @@ namespace Beluha\BlogBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface as Container;
-use Symfony\Component\VarDumper\VarDumper;
 
 /**
  * Description of LoginMenuBuilder

@@ -7,8 +7,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Beluha\BlogBundle\Form\CommentType;
 use Beluha\BlogBundle\Entity\Comment;
+use Application\Sonata\UserBundle\Entity\User;
 
 class PostController extends Controller
 {
@@ -125,9 +127,6 @@ class PostController extends Controller
         $query      = $qb->add('where', $qb->expr()->in('p.id', $ids))->getQuery();
         $posts      = $query->getResult();
 
-        $dumper = new VarDumper();
-        $dumper->dump($posts);
-
         $latestPosts = $this->getDoctrine()->getRepository('BeluhaBlogBundle:Post')->findLatest(5);
 
         if (null === $posts) {
@@ -140,4 +139,29 @@ class PostController extends Controller
                 'latestPosts' => $latestPosts
         ]);
     }
+    
+    
+    
+    /**
+     * @ParamConverter("user", class="ApplicationSonataUserBundle:User")
+     * Show a post by Author
+     * 
+     * @param int Application\Sonata\UserBundle\Entity\User $user
+     * 
+     * @throws NotFoundHttpException
+     * @return array
+     * 
+     */
+    public function showByAuthorAction(User $user)
+    {
+
+        $latestPosts = $this->getDoctrine()->getRepository('BeluhaBlogBundle:Post')->findLatest(5);
+        
+        $posts = $user->getPosts();
+        return $this->render('BeluhaBlogBundle:Post:index.html.twig',
+                [
+                'posts' => $posts,
+                'latestPosts' => $latestPosts
+        ]);        
+    }    
 }

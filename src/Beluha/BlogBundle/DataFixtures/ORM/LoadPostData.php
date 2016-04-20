@@ -9,7 +9,7 @@ use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Beluha\BlogBundle\Entity\Post;
 use Beluha\BlogBundle\Entity\Category;
-use Beluha\SecurityBundle\Entity\User;
+use Application\Sonata\UserBundle\Entity\User;
 
 /**
  * Description of LoadPostData

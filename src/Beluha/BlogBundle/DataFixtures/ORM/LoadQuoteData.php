@@ -41,7 +41,7 @@ class LoadQuoteData extends AbstractFixture implements OrderedFixtureInterface, 
      */
     public function load(ObjectManager $manager)
     {
-        $users = $this->container->get('doctrine')->getRepository('BeluhaSecurityBundle:User')->findAll();
+        $users = $this->container->get('doctrine')->getRepository('ApplicationSonataUserBundle:User')->findAll();
 
         $a1 = new AuthorQuote();
         $a1->setName('А. Камю');

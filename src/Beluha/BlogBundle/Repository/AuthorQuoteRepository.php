@@ -2,7 +2,7 @@
 
 namespace Beluha\BlogBundle\Repository;
 
-use Symfony\Component\VarDumper\VarDumper;
+
 
 /**
  * AuthorQuoteRepository
@@ -14,11 +14,10 @@ class AuthorQuoteRepository extends \Doctrine\ORM\EntityRepository
 {
     public function findByTerm($term)
     {
-        $dumper = new VarDumper();
         $q = $this->getEntityManager()
             ->createQuery('SELECT a FROM BeluhaBlogBundle:AuthorQuote a WHERE a.name LIKE :name')
             ->setParameter('name', '%'.$term.'%');
-        $dumper->dump($q);
+
         
         return $q->getResult();
         /*return $this->getEntityManager()

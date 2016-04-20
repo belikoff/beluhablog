@@ -8,6 +8,7 @@ use Beluha\BlogBundle\Entity\Timestampable;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\Common\Collections\ArrayCollection;
 use DoctrineExtensions\Taggable\Taggable;
+use Application\Sonata\UserBundle\Entity\User;
 
 /**
  * Post
@@ -53,7 +54,7 @@ class Post extends Timestampable implements Taggable
     /**
      * @var Author
      *
-     * @ORM\ManyToOne(targetEntity="Beluha\SecurityBundle\Entity\User", inversedBy="posts")
+     * @ORM\ManyToOne(targetEntity="\Application\Sonata\UserBundle\Entity\User", inversedBy="posts")
      * @ORM\JoinColumn(name="author_id", referencedColumnName="id", nullable=false)
      * @Assert\NotBlank
      */
@@ -187,7 +188,6 @@ class Post extends Timestampable implements Taggable
     /**
      * Set author
      *
-     * @param \Beluha\SecurityBundle\Entity\User $author
      *
      * @return Post
      */
@@ -201,7 +201,6 @@ class Post extends Timestampable implements Taggable
     /**
      * Get author
      *
-     * @return \Beluha\SecurityBundle\Entity\User
      */
     public function getAuthor()
     {

@@ -27,11 +27,10 @@ class AuthorQuoteController extends Controller
         $term = $request->query->get('term', null);
 
         $em = $this->getDoctrine()->getManager();
-        $dumper = new VarDumper();
-        $dumper->dump($term);
+
         
         $authors = $em->getRepository('BeluhaBlogBundle:AuthorQuote')->findByTerm($term);
-        //$dumper->dump($authors);
+
         $results = [];
         foreach ($authors as $author){
             $results[] = [

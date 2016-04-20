@@ -15,3 +15,7 @@ beluha_blog_post_createcomment:
 blog_tag:
     path: /tag/{slug}
     defaults:  { _controller: BeluhaBlogBundle:Post:showByTag }
+
+blog_author:
+    path: /author/{user}
+    defaults:  { _controller: BeluhaBlogBundle:Post:showByAuthor }

@@ -3,7 +3,7 @@
 namespace Beluha\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Beluha\SecurityBundle\Entity\User;
+use Application\Sonata\UserBundle\Entity\User;
 
 /**
  * Quote
@@ -36,7 +36,7 @@ class Quote
     protected $author;
     
     /**
-     * @ORM\ManyToOne(targetEntity="Beluha\SecurityBundle\Entity\User", inversedBy="quotes")
+     * @ORM\ManyToOne(targetEntity="\Application\Sonata\UserBundle\Entity\User", inversedBy="quotes")
      * @ORM\JoinColumn(name="by_added_id", referencedColumnName="id")
      */
     protected $by_added;
@@ -103,7 +103,7 @@ class Quote
     /**
      * Set byAdded
      *
-     * @param \Beluha\BlogBundle\Entity\BeluhaSecurityBundle:User $byAdded
+     * @param \Application\Sonata\UserBundle\Entity\User:User $byAdded
      *
      * @return Quote
      */
@@ -117,7 +117,7 @@ class Quote
     /**
      * Get byAdded
      *
-     * @return \Beluha\BlogBundle\Entity\BeluhaSecurityBundle:User
+     * @return \Application\Sonata\UserBundle\Entity\User:User
      */
     public function getByAdded()
     {

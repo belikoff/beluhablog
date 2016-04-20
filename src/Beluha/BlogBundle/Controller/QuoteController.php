@@ -8,7 +8,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Beluha\BlogBundle\Entity\Quote;
 use Beluha\BlogBundle\Form\QuoteType;
-use Symfony\Component\VarDumper\VarDumper;
 use Symfony\Component\HttpFoundation\Response;
 
 
@@ -29,7 +28,6 @@ class QuoteController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $dumer = new VarDumper();
         //$quotes = $em->getRepository('BeluhaBlogBundle:Quote')->findAll();
 
         $dql   = "SELECT q, a FROM BeluhaBlogBundle:Quote q JOIN q.author a";
@@ -41,7 +39,6 @@ class QuoteController extends Controller
             $request->query->getInt('page', 1)/*page number*/,
             5/*limit per page*/
         );
-        $dumer->dump($pagination);
         //return $this->render('quote/index.html.twig', array(
            // 'quotes' => $quotes,
         //));
@@ -63,8 +60,6 @@ class QuoteController extends Controller
             $id = $request->request->get('id');
         }
         $quote = $em->getRepository('BeluhaBlogBundle:Quote')->getRandom($id);
-        //$dumper = new VarDumper();
-        //$dumper->dump($quote);
         return $this->render('BeluhaBlogBundle::quoteBlock.html.twig',['quote' => $quote]);
     }
 

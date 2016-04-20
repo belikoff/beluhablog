@@ -32,7 +32,8 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),             
             new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),            
-            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),            
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new Sonata\FormatterBundle\SonataFormatterBundle(),
             new Beluha\BlogBundle\BeluhaBlogBundle(),           
         );
 

@@ -31,7 +31,7 @@ class AuthorController extends Controller
      */
     public function showAction($slug)
     {
-        $author = $this->getDoctrine()->getRepository('BeluhaSecurityBundle:User')->findOneBy(
+        $author = $this->getDoctrine()->getRepository('ApplicationSonataUserBundle:User')->findOneBy(
                 [
                     'slug' => $slug,
                 ]);
