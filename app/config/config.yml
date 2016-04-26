@@ -187,4 +187,16 @@ fpn_tag:
         tag_class:     Beluha\BlogBundle\Entity\Tag
         tagging_class: Beluha\BlogBundle\Entity\Tagging
         
-       
+hwi_oauth:
+    fosub:
+        # try 30 times to check if a username is available (foo, foo1, foo2 etc)
+        username_iterations: 30
+        properties:
+            github: 4ada6d44e7cbea4c5591
+            #my_custom_provider: customId        
+    firewall_name:  main
+    resource_owners:
+        any_name:
+            type:                github
+            client_id:           4ada6d44e7cbea4c5591
+            client_secret:       45f7e33599bfe9aa1f311ab6fa1a17150ce16af3       

@@ -34,6 +34,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),            
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Sonata\FormatterBundle\SonataFormatterBundle(),
+            new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Beluha\BlogBundle\BeluhaBlogBundle(),           
         );
 
