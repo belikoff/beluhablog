@@ -35,7 +35,8 @@ class AppKernel extends Kernel
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Sonata\FormatterBundle\SonataFormatterBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
-            new Beluha\BlogBundle\BeluhaBlogBundle(),           
+            new Beluha\BlogBundle\BeluhaBlogBundle(),
+            new Application\Sonata\AdminBundle\ApplicationSonataAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

@@ -42,6 +42,10 @@ twig:
         resources:
             - 'SonataFormatterBundle:Form:formatter.html.twig'   
 
+sonata_admin:
+    templates:
+        # default global templates
+        layout:  SonataAdminBundle::layout.html.twig
 sonata_formatter:
     formatters:
         markdown:
