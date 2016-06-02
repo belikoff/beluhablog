@@ -101,6 +101,8 @@ doctrine:
         entity_managers:
             default:
                 auto_mapping: true
+                metadata_cache_driver: redis
+                query_cache_driver: redis
                 mappings:
                     ApplicationSonataUserBundle: ~
                     SonataUserBundle: ~
@@ -200,3 +202,27 @@ hwi_oauth:
             type:                github
             client_id:           4ada6d44e7cbea4c5591
             client_secret:       45f7e33599bfe9aa1f311ab6fa1a17150ce16af3       
+            
+###--- configure predis as client ---###
+snc_redis:
+    clients:
+        default:
+            type: predis
+            alias: default
+            dsn: redis://localhost
+        doctrine:
+            type: predis
+            alias: doctrine
+            dsn: redis://localhost
+    # configure doctrine caching
+    doctrine:
+        metadata_cache:
+            client: doctrine
+            entity_manager: default
+            document_manager: default
+        result_cache:
+            client: doctrine
+            entity_manager: [default]
+        query_cache:
+            client: doctrine
+            entity_manager: default

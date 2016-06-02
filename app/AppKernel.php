@@ -35,6 +35,7 @@ class AppKernel extends Kernel
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new Sonata\FormatterBundle\SonataFormatterBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+            new Snc\RedisBundle\SncRedisBundle(),
             new Beluha\BlogBundle\BeluhaBlogBundle(),           
         );
 

@@ -2,6 +2,8 @@
 
 namespace Beluha\BlogBundle\Repository;
 use Doctrine\ORM\Query;
+use Snc\RedisBundle\Doctrine\Cache\RedisCache;
+use Predis\Client;
 
 
 /**

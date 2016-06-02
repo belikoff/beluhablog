@@ -1,6 +1,9 @@
 <?php
 
 namespace Beluha\BlogBundle\Repository;
+use Snc\RedisBundle\Doctrine\Cache\RedisCache;
+use Predis\Client;
+
 
 /**
  * PostRepository
@@ -18,10 +21,24 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
      */
     public function findLatest($num)
     {
-        $qb = $this->getQueryBilder()
+      # init predis client
+      $predis = new RedisCache();
+      $predis->setRedis(new Client());
+      # define cache lifetime period as 1 hour in seconds
+      $cache_lifetime = 86400;
+        
+      /*$qb = $this->getQueryBilder()
                 ->orderBy('p.createdAt','desc')
                 ->setMaxResults($num);
-        return $qb->getQuery()->getResult();
+
+        return $qb->getQuery()->getResult();*/
+      return $this->getEntityManager()
+            ->createQuery('SELECT p FROM BeluhaBlogBundle:Post p ORDER BY p.createdAt DESC')
+            ->setMaxResults($num)
+            ->setResultCacheDriver($predis)
+            ->setResultCacheLifetime($cache_lifetime)
+            ->getResult();
+        
     }
     
     /**
